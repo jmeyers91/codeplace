@@ -1,0 +1,1 @@
+console.log('codeplace cli', process);
