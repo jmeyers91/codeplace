@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 import nanoid from 'nanoid';
 import axios from 'axios';
@@ -51,7 +50,7 @@ class App extends Component {
     outputPanelOpen: true,
     compiledTemplate: '',
     saving: false,
-    dirty: false,
+    dirty: true,
   };
 
   handleRunClick = () => this.compile();
@@ -115,9 +114,12 @@ class App extends Component {
         })
         this.compile();
       } catch(error) {
+        this.setState({dirty: true});
         console.log('Failed to load project', error);
       }
     } else {
+      const { projectId } = this.state;
+      window.history.pushState(null, "", `/${projectId}`);
       this.compile();
     }
 

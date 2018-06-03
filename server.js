@@ -3,12 +3,12 @@ const path = require('path');
 const makeDir = require('make-dir');
 const Express = require('express');
 const app = Express();
-const port = 9991;
 
-const projectsDir = path.resolve('./projects');
+const projectsDir = path.join(__dirname, 'projects');
 const projectDir = projectId => path.join(projectsDir, projectId);
 const projectFile = (projectId, fileName) => path.join(projectsDir, projectId, fileName);
 
+app.use(Express.static(path.join(__dirname, 'build')));
 app.use(require('body-parser').json());
 
 app.get('/api/projects', async (req, res) => {
@@ -57,4 +57,9 @@ app.post('/api/projects/:projectId', async (req, res) => {
   }
 });
 
-app.listen(port, error => console.log(error || `Listening on port ${port}`));
+module.exports = port => new Promise((resolve, reject) => {
+  app.listen(port, error => {
+    if(error) reject(error);
+    else resolve();
+  });
+});
