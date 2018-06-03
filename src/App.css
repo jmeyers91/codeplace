@@ -1,0 +1,114 @@
+.app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  border-bottom: 2px solid #555;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 50px;
+  background-color: #333;
+  color: rgba(255,255,255,0.8);
+}
+
+.header > div {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.project-id-input {
+  height: 40px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: white;
+}
+
+.save-button {
+  margin-left: 20px;
+}
+
+.save-button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1;
+}
+
+.panel {
+  flex: 1;
+  max-width: 100%;
+  transition: max-width 0.2s;
+}
+
+.panel.closed {
+  max-width: 0%;
+  overflow: hidden;
+}
+
+.panel .react-codemirror2 {
+  height: 100%;
+}
+
+.panel .CodeMirror {
+  height: 100%;
+}
+
+.panel > .header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.panel + .panel {
+  border-left: 2px solid #555;
+}
+
+.output-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.output-panel iframe {
+  border: none;
+  outline: none;
+}
+
+.header button {
+  border: none;
+  padding: none;
+  height: 100%;
+  width: 100px;
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.3);
+  color: white;
+  font-size: 16px;
+}
+
+.header button + button {
+  margin-left: 10px;
+}
+
+.header button.inactive {
+  opacity: 0.3;
+}
